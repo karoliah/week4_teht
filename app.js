@@ -7,7 +7,7 @@ const port = 3000;
 const passport = require('./utils/pass');
 const catRoute = require('./routes/catRoute');
 const userRoute = require('./routes/userRoute');
-const authRoute = require('./routes/authRoute')
+const authRoute = require('./routes/authRoute');
 
 app.use(cors());
 app.use(express.json()); // for parsing application/json
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use(express.static('public'));
 app.use(express.static('uploads'));
 
-
+app.use('/auth', authRoute);
 app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 

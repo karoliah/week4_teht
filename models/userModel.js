@@ -38,6 +38,7 @@ const insertUser = async (user) => {
   try{
     console.log('insert user?', user);
     const [rows] = await promisePool.query('INSERT INTO wop_user (name, email, password) VALUES (?, ?, ?)', [user.name, user.email, user.password]);
+    return rows;
   } catch (e) {
     console.error('updateUser model crash', e.message);
   }
